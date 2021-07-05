@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-3">
+    <img src="{{ movie_row['poster_link'] }}" alt="" style="width:253px;height:350px;margin-top: 50px;"/>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">{{ movie_row['movie_title'] }}</h3>
+          <hr style="height:2px;border-width:0;color:gray;background-color:black">
+          <p>{{ movie_row['plot_summary'] }}</p>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Genres:</strong> {{ movie_row['genres'] }}</p>
+        <p><strong>Language:</strong> {{ movie_row['language'] }} </p>
+        <p><strong>Director:</strong> {{ movie_row['director_name'] }} </p>
+        <p><strong>Duration:</strong> {{ movie_row['movie_duration'] }} </p>
+        <p><strong>Year:</strong> {{ movie_row['movie_year'] }} </p>
+        <p><strong>Content Rating:</strong> {{ movie_row['content_rating'] }} </p>
+        <p><strong>Rating: </strong> {{ movie_row['rating'] }}/10</p>
+      </div>
+      <div class="col-md-6">
+        <form method="POST" action="">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb4 ">Add a Review</legend>
+              <div class="form-group" style="width: 400px;">
+                  {{ form.review.label(class="form-control-label") }}
+                  {% if form.review.errors %}
+                    {{ form.review(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                      {% for error in form.review.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    {{ form.review(class="form-control form-control-lg") }}
+                  {% endif %}
+              </div>
+          </fieldset>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

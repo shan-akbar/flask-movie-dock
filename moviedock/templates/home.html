@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" action="">
+  {{ form.hidden_tag() }}
+  <fieldset class="form-group">
+      <div class="form-group" style="width: 1000px;">
+          <div class="row">
+            <div class="col-md-3">
+              </div>
+            <div class="col-md-6">
+            {{ form.search(class="form-control", placeholder="Search a Movie") }}
+            </div>
+            <div class="col-md-3">
+            {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+          </div>
+      </div>
+  </fieldset>
+</form>
+
+<div class="row" >
+  <h3 style="font-weight: bold;">{{message}}</h3>
+</div>
+<div class="row">
+
+  {% for movie in movies %}
+  <div class="col-md-3">
+    <a href="{{ url_for('movie', movie_id = movie.id) }}">
+      <img src="{{ movie.poster_link }}" alt="" style="width:228px;height:315px;"/>
+
+    </a>
+    <p>{{ movie.movie_title }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

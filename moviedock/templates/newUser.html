@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row" >
+  <h3 style="font-weight: bold;">Please Select Topics of your Intrests</h3>
+</div>
+<form method="post">
+  <div class="row">
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="action.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.action.label(class="form-control-label") }}
+        {{ form.action()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="adventure.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.adventure.label(class="form-control-label") }}
+        {{ form.adventure()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="animation.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.animation.label(class="form-control-label") }}
+        {{ form.animation()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="comedy.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.comedy.label(class="form-control-label") }}
+        {{ form.comedy()}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="mystery.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.mystery.label(class="form-control-label") }}
+        {{ form.mystery()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="crime.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.crime.label(class="form-control-label") }}
+        {{ form.crime()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="drama.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.drama.label(class="form-control-label") }}
+        {{ form.drama()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="fantasy.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.fantasy.label(class="form-control-label") }}
+        {{ form.fantasy()}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="horror.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.horror.label(class="form-control-label") }}
+        {{ form.horror()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="romance.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.romance.label(class="form-control-label") }}
+        {{ form.romance()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="sci-fi.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.scifi.label(class="form-control-label") }}
+        {{ form.scifi()}}
+    </div>
+    <div class="col-md-3">
+        <img src='{{url_for("static", filename="thriller.jpg") }}' style="width:233px;height:131px;"/>
+        {{ form.hidden_tag() }}
+        {{ form.thriller.label(class="form-control-label") }}
+        {{ form.thriller()}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+  </div>
+</form>
+
+{% endblock content %}

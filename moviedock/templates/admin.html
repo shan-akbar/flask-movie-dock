@@ -1,0 +1,23 @@
+{% extends "layout.html"%}
+{% block content %}
+
+    <h2><b>Admin Dashboard</b></h2>
+    <button class="button button1" href="{{ url_for('home') }}">Registered Users</button>
+    <button class="button button1" href="">Upload Movies</button>
+
+    <h3><b>Registered Users</b></h3>
+    <table style="width:100%"> 
+        <tr>
+            <th>User Name</th>
+            <th>Email</th>
+        </tr>
+        {% for user in users %}
+
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            
+        {% endfor %}
+    </table>
+{% endblock content %}

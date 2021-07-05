@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-3">
+    <img src="{{ movie_row['poster_link'] }}" alt="" style="width:253px;height:350px;margin-top: 50px;"/>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">{{ movie_row['movie_title'] }}</h3>
+          <hr style="height:2px;border-width:0;color:gray;background-color:black">
+          <p>{{ movie_row['plot_summary'] }}</p>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Genres:</strong> {{ movie_row['genres'] }}</p>
+        <p><strong>Language:</strong> {{ movie_row['language'] }} </p>
+        <p><strong>Director:</strong> {{ movie_row['director_name'] }} </p>
+        <p><strong>Duration:</strong> {{ movie_row['movie_duration'] }} </p>
+        <p><strong>Year:</strong> {{ movie_row['movie_year'] }} </p>
+        <p><strong>Content Rating:</strong> {{ movie_row['content_rating'] }} </p>
+        <p><strong>Rating: </strong> {{ movie_row['rating'] }}/10</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr style="height:2px;border-width:0;color:gray;background-color:black">
+{% if current_user.is_authenticated %}
+  <div class="row">
+    <h3 style="font-weight: bold;">Your Reviews</h3>
+  </div>
+  <br>
+
+  {% for username in current_user_reviews %}
+
+    <div class="row">
+      <div class="col-md-8">
+        <p><strong>Date Posted: </strong>{{current_user_reviews[username].date_posted}}</p>
+        <p>{{ current_user_reviews[username].review }}</p>
+      </div>
+    </div>
+  {% endfor %}
+  <hr style="height:2px;border-width:0;color:gray;background-color:black">
+{% endif %}
+<div class="row">
+  <h3 style="font-weight: bold;">All Users Reviews</h3>
+</div>
+
+<br>
+
+  {% for username in users_reviews_dict %}
+
+    <div class="row">
+      <div class="col-md-8">
+        <p><strong>{{username}}</strong></p>
+        <p><strong>Date Posted: </strong>{{users_reviews_dict[username].date_posted}}</p>
+        <p>{{ users_reviews_dict[username].review }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+<div  class="row">
+  <div class="col-md-3">
+    <img src="{{ movie_row['poster_link'] }}" alt="" style="width:253px;height:350px;margin-top: 50px;"/>
+  </div>
+  <div class="col-md-8">
+    <h3 style="font-weight: bold;">{{ movie_row['movie_title'] }}</h3>
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <p>{{ movie_row['plot_summary'] }}</p>
+    <p><strong>Genres:</strong> {{ movie_row['genres'] }}</p>
+    <p><strong>Language:</strong> {{ movie_row['language'] }} </p>
+    <p><strong>Director:</strong> {{ movie_row['director_name'] }} </p>
+    <p><strong>Actors :</strong> {{ movie_row['actor_1_name'] }}, {{ movie_row['actor_2_name'] }}, {{ movie_row['actor_3_name'] }}</p>
+    <p><strong>Duration:</strong> {{ movie_row['movie_duration'] }} </p>
+    <p><strong>Year:</strong> {{ movie_row['movie_year'] }} </p>
+    <p><strong>Content Rating:</strong> {{ movie_row['content_rating'] }} </p>
+    <p><strong>Rating: </strong> {{ movie_row['rating'] }}/10</p>
+    <a href="{{url_for('review', movie_id = movie_id)}}"
+    class="btn btn-primary stretched-lin">Review this movie!</a>
+    <a href="{{url_for('reviews', movie_id = movie_id)}}"
+    class="btn btn-primary stretched-lin">User Reviews({{total_reviews}})</a>
+  </div>
+</div>
+<hr style="height:2px;border-width:0;color:gray;background-color:black">
+<div class="row">
+  <h3 style="font-weight: bold;">Related Movies</h3>
+</div>
+<br>
+<div class="row">
+  {% for movie in recommended_movies %}
+
+    <div class="col-md-3">
+      <a href="{{ url_for('movie', movie_id = movie.id) }}">
+        <img src="{{ movie['poster_link'] }}" alt="" style="width:228px;height:315px;"/>
+      </a>
+      <p>{{ movie['movie_title'] }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock content %}
